@@ -1,4 +1,4 @@
-sal-docker
+munkiwebadmin-docker
 ==========
 
 Dockerfile for munkiwebadmin
