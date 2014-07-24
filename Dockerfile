@@ -28,7 +28,8 @@ ADD run.sh /etc/my_init.d/run.sh
 RUN chown -R app:app /home/app/
 
 ADD munkiwebadmin.conf /etc/nginx/sites-enabled/munkiwebadmin.conf
+EXPOSE 80
+
 RUN rm -f /etc/nginx/sites-enabled/default
 RUN rm -f /etc/service/nginx/down
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-EXPOSE 8080

@@ -225,7 +225,7 @@ LOGGING = {
 # APPNAME is user-visable web app name
 APPNAME = 'MunkiWebAdmin'
 # MUNKI_REPO_DIR holds the local filesystem path to the Munki repo
-MUNKI_REPO_DIR = '/Users/Shared/munki_repo'
+MUNKI_REPO_DIR = '/munki_repo'
 
 # provide the path to the git binary if you want MunkiWeb to add and commit
 # manifest edits to a git repo
