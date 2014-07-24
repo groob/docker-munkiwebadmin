@@ -20,14 +20,6 @@ RUN git clone https://code.google.com/p/munki.munkiwebadmin/ /home/app/munkiweba
 RUN easy_install psycopg2
 RUN pip install django==1.5.1
 RUN pip install South==0.8.2
-RUN pip install Yapsy==1.10.223
-RUN pip install django-bootstrap-toolkit==2.15.0
-RUN pip install docutils==0.11
-RUN pip install puppetdb==0.0.1
-RUN pip install requests==2.0.0
-RUN pip install wsgiref==0.1.2
-RUN pip install python-dateutil==2.2
-RUN pip install pytz==2014.3
 RUN mkdir -p /etc/my_init.d
 ADD initial_data.json /home/app/munkiwebadmin/
 ADD settings.py /home/app/munkiwebadmin/
