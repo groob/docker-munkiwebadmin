@@ -26,7 +26,9 @@ In the folder with the Dockerfile, run
 
 ```docker build -t mwa .```
 ##run
-```docker run -p 80:8080 -d --link mwa-postgresql:db mwa /sbin/my_init```
+```docker run --rm -t -i -p 80:80 --link mwa-postgresql:db  -v /tmp/munki_repo:/munki_repo:rw groob/mwa /sbin/my_init -- bash -l ```
+
+I'm mounting the munki repo from another volume.
 
 #To Do
 
