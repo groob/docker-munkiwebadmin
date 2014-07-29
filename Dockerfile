@@ -28,6 +28,7 @@ ADD run.sh /etc/my_init.d/run.sh
 RUN chown -R app:app /home/app/
 
 ADD munkiwebadmin.conf /etc/nginx/sites-enabled/munkiwebadmin.conf
+VOLUME /munki_repo
 EXPOSE 80
 
 RUN rm -f /etc/nginx/sites-enabled/default
