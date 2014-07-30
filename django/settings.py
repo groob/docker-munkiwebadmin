@@ -177,6 +177,7 @@ INSTALLED_APPS = (
     'manifests',
     'inventory',
     'licenses',
+    'admin_tools',
 )
 
 # A sample logging configuration. The only tangible logging
