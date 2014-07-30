@@ -32,6 +32,7 @@ VOLUME ["/munki_repo", "/home/app/munkiwebadmin" ]
 EXPOSE 80
 
 RUN rm -f /etc/service/nginx/down
+RUN rm -f /etc/nginx/sites-enabled/default
 
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*

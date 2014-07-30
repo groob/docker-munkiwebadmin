@@ -32,3 +32,4 @@ I'm mounting the munki repo from another volume.
 
 #TODO
 * add support for logging
+* add support for SSL
