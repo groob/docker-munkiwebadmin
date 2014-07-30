@@ -21,13 +21,13 @@ RUN apt-get update && apt-get install -y \
 RUN git clone https://code.google.com/p/munki.munkiwebadmin/ $APP_DIR
 
 RUN mkdir -p /etc/my_init.d
-ADD run.sh /etc/my_init.d/run.sh
-ADD settings.py $APP_DIR/
-ADD passenger_wsgi.py $APP_DIR/
-ADD requirements.txt $APP_DIR/
+ADD .docker/run.sh /etc/my_init.d/run.sh
+ADD django/settings.py $APP_DIR/
+ADD django/passenger_wsgi.py $APP_DIR/
+ADD django/requirements.txt $APP_DIR/
 RUN pip install -r $APP_DIR/requirements.txt
-ADD nginx-env.conf /etc/nginx/main.d/
-ADD munkiwebadmin.conf /etc/nginx/sites-enabled/munkiwebadmin.conf
+ADD nginx/nginx-env.conf /etc/nginx/main.d/
+ADD nginx/munkiwebadmin.conf /etc/nginx/sites-enabled/munkiwebadmin.conf
 
 VOLUME /munki_repo
 EXPOSE 80
