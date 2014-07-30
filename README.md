@@ -30,8 +30,5 @@ In the folder with the Dockerfile, run
 
 I'm mounting the munki repo from another volume.
 
-#To Do
-
-* Implement backup to S3
-* set admin user and password from environment variables.
-
+#TODO
+* add support for logging

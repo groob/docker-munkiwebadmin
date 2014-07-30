@@ -19,20 +19,18 @@ RUN apt-get update && apt-get install -y \
   libpq-dev
 
 RUN git clone https://code.google.com/p/munki.munkiwebadmin/ $APP_DIR
-
+ADD django/requirements.txt $APP_DIR/
 RUN mkdir -p /etc/my_init.d
-ADD .docker/run.sh /etc/my_init.d/run.sh
+RUN pip install -r $APP_DIR/requirements.txt
 ADD django/settings.py $APP_DIR/
 ADD django/passenger_wsgi.py $APP_DIR/
-ADD django/requirements.txt $APP_DIR/
-RUN pip install -r $APP_DIR/requirements.txt
 ADD nginx/nginx-env.conf /etc/nginx/main.d/
 ADD nginx/munkiwebadmin.conf /etc/nginx/sites-enabled/munkiwebadmin.conf
+ADD .docker/run.sh /etc/my_init.d/run.sh
 
-VOLUME /munki_repo
+VOLUME ["/munki_repo", "/home/app/munkiwebadmin" ]
 EXPOSE 80
 
-RUN rm -f /etc/nginx/sites-enabled/default
 RUN rm -f /etc/service/nginx/down
 
 # Clean up APT when done.
