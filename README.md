@@ -2,7 +2,9 @@ docker-munkiwebadmin
 ==========
 
 This Docker container runs [MunkiWebAdmin](https://code.google.com/p/munki/wiki/MunkiWebAdmin).
-The container expects a linked PostgreSQL database container.
+The container expects a linked PostgreSQL database container and that your munki repo is mounted
+in /munki_repo
+
 Several options, such as the timezone and admin password are customizable using environment variables.
 
 #PostgreSQL container
@@ -14,12 +16,12 @@ I use the paintedfox/postgresql container from the Docker Hub.
 $ docker pull paintedfox/postgresql
 
 $ mkdir -p /tmp/postgresql
-$ docker run -d --name="munkiwebadmin-postgresql" \
+$ docker run -d --name="postgresql-munkiwebadmin" \
              -p 127.0.0.1:5432:5432 \
              -v /tmp/postgresql:/data \
              -e USER="admin" \
-             -e DB="mwa_db" \
-             -e PASS="$(pwgen -s -1 16)" \
+             -e DB="munkiwebadmin_db" \
+             -e PASS="your_password" \
               paintedfox/postgresql
 ```
 
@@ -33,9 +35,9 @@ Read the paintedfox/postgresql documentation on the Docker Hub [page](https://re
 ```bash
 $ docker run -d --name="munkiwebadmin" \
              -p 80:80 \
-             --link munkiwebadmin-postgresql \
+             --link postgresql-munkiwebadmin:db \
              -v /tmp/munki_repo:/munki_repo \
-             -e ADMIN_PASS="password"
+             -e ADMIN_PASS="password" \
              groob/munkiwebadmin
 ```
 This assumes your Munki repo is mounted at /tmp/munki_repo.
