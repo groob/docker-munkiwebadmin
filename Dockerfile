@@ -21,7 +21,6 @@ RUN easy_install psycopg2
 RUN pip install django==1.5.1
 RUN pip install South==0.8.2
 RUN mkdir -p /etc/my_init.d
-ADD initial_data.json /home/app/munkiwebadmin/
 ADD settings.py /home/app/munkiwebadmin/
 ADD passenger_wsgi.py /home/app/munkiwebadmin/
 ADD run.sh /etc/my_init.d/run.sh
