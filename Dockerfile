@@ -3,6 +3,7 @@
 # See https://github.com/phusion/passenger-docker/blob/master/Changelog.md for
 # a list of version numbers.
 FROM phusion/passenger-full:0.9.11
+MAINTAINER Victor Vrantchan <vrancean@gmail.com>
 
 # Set correct environment variables.
 ENV HOME /root
@@ -27,12 +28,11 @@ ADD django/ $APP_DIR/
 ADD nginx/nginx-env.conf /etc/nginx/main.d/
 ADD nginx/munkiwebadmin.conf /etc/nginx/sites-enabled/munkiwebadmin.conf
 ADD .docker/run.sh /etc/my_init.d/run.sh
+RUN rm -f /etc/service/nginx/down
+RUN rm -f /etc/nginx/sites-enabled/default
 
 VOLUME ["/munki_repo", "/home/app/munkiwebadmin" ]
 EXPOSE 80
-
-RUN rm -f /etc/service/nginx/down
-RUN rm -f /etc/nginx/sites-enabled/default
 
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
