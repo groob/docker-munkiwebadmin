@@ -26,6 +26,7 @@ ADD settings.py /home/app/munkiwebadmin/
 ADD passenger_wsgi.py /home/app/munkiwebadmin/
 ADD run.sh /etc/my_init.d/run.sh
 RUN chown -R app:app /home/app/
+ADD nginx-env.conf /etc/nginx/main.d/
 
 ADD munkiwebadmin.conf /etc/nginx/sites-enabled/munkiwebadmin.conf
 VOLUME /munki_repo
