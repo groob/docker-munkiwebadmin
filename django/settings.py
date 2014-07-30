@@ -39,12 +39,12 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'mwa_db',                      # Or path to database file if using sqlite3.
+        'NAME': os.environ['DB_ENV_DB'],                      # Or path to database file if using sqlite3.
         # The following settings are not used with sqlite3:
-        'USER': 'mwaadmin',
-        'PASSWORD': 'password',
+        'USER': os.environ['DB_ENV_USER'],
+        'PASSWORD': os.environ['DB_ENV_PASS'],
         'HOST': os.environ['DB_PORT_5432_TCP_ADDR'],                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
-        'PORT': '',                      # Set to empty string for default.
+        'PORT': os.environ['DB_PORT_5432_TCP_PORT'],                      # Set to empty string for default.
     }
 }
 
@@ -67,7 +67,7 @@ DATABASES = {
 # timezone as the operating system.
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
-TIME_ZONE = "America/New_York"
+TIME_ZONE = os.environ['TIME_ZONE']
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html

@@ -8,6 +8,7 @@ FROM phusion/passenger-full:0.9.11
 ENV HOME /root
 ENV DEBIAN_FRONTEND noninteractive
 ENV APP_DIR /home/app/munkiwebadmin
+ENV TIME_ZONE America/New_York
 
 # Use baseimage-docker's init process.
 CMD ["/sbin/my_init"]

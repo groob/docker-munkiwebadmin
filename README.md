@@ -32,4 +32,6 @@ I'm mounting the munki repo from another volume.
 
 #TODO
 * add support for logging
+* add more configuration options using environment variables
+* add support for sqlite and mysql
 * add support for SSL
