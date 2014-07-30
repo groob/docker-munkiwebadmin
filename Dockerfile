@@ -6,6 +6,8 @@ FROM phusion/passenger-full:0.9.11
 
 # Set correct environment variables.
 ENV HOME /root
+ENV DEBIAN_FRONTEND noninteractive
+ENV APP_DIR /home/app/munkiwebadmin
 
 # Use baseimage-docker's init process.
 CMD ["/sbin/my_init"]
@@ -16,14 +18,14 @@ RUN apt-get update && apt-get install -y \
   python-dev \
   libpq-dev
 
-RUN git clone https://code.google.com/p/munki.munkiwebadmin/ /home/app/munkiwebadmin
+RUN git clone https://code.google.com/p/munki.munkiwebadmin/ $APP_DIR
 
 RUN mkdir -p /etc/my_init.d
 ADD run.sh /etc/my_init.d/run.sh
-ADD settings.py /home/app/munkiwebadmin/
-ADD passenger_wsgi.py /home/app/munkiwebadmin/
-ADD requirements.txt /home/app/munkiwebadmin/
-RUN pip install -r /home/app/munkiwebadmin/requirements.txt
+ADD settings.py $APP_DIR/
+ADD passenger_wsgi.py $APP_DIR/
+ADD requirements.txt $APP_DIR/
+RUN pip install -r $APP_DIR/requirements.txt
 ADD nginx-env.conf /etc/nginx/main.d/
 ADD munkiwebadmin.conf /etc/nginx/sites-enabled/munkiwebadmin.conf
 
