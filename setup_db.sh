@@ -3,8 +3,7 @@ DB_NAME=munkiwebadmin
 DB_USER=admin
 DB_PASS=password
 
-
-echo "CREATE ROLE $DB_USER WITH LOGIN ENCRYPTED PASSWORD 'password' CREATEDB;" | docker run \
+echo "CREATE ROLE $DB_USER WITH LOGIN ENCRYPTED PASSWORD '${DB_PASS}' CREATEDB;" | docker run \
   --rm \
   --interactive \
   --link postgres-munkiwebadmin:postgres \
