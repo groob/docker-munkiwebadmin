@@ -213,9 +213,9 @@ LOGGING = {
 # MunkiWeb-specific settings #
 ##############################
 # APPNAME is user-visable web app name
-APPNAME = 'MunkiWebAdmin'
+APPNAME = os.environ['APPNAME']
 # MUNKI_REPO_DIR holds the local filesystem path to the Munki repo
-MUNKI_REPO_DIR = '/munki_repo'
+MUNKI_REPO_DIR = os.environ['MUNKI_REPO_DIR']
 
 # provide the path to the git binary if you want MunkiWeb to add and commit
 # manifest edits to a git repo
@@ -224,15 +224,17 @@ MUNKI_REPO_DIR = '/munki_repo'
 #GIT_PATH = '/usr/bin/git'
 
 # name of the key in a manifest file that names the user or dept
-MANIFEST_USERNAME_KEY = 'user'
+MANIFEST_USERNAME_KEY = os.environ['MANIFEST_USERNAME_KEY']
+
 # set MANIFEST_USERNAME_IS_EDITABLE to allow edits to the displayed username
-MANIFEST_USERNAME_IS_EDITABLE = False
+MANIFEST_USERNAME_IS_EDITABLE = os.environ['MANIFEST_USERNAME_IS_EDITABLE']
 
 # enable WARRANTY to show warranty information on the detail machine report
-WARRANTY_LOOKUP_ENABLED = False
+WARRANTY_LOOKUP_ENABLED = os.environ['WARRANTY_LOOKUP_ENABLED']
 
 # enable MODEL_LOOKUP_ENABLED to show a human readable version of the machines 
 # model
+MODEL_LOOKUP_ENABLED = os.environ['MODEL_LOOKUP_ENABLED']
 MODEL_LOOKUP_ENABLED = False
 
 # if MunkiWebAdmin is behind a proxy, and WARRANTY_LOOKUP_ENABLED or
