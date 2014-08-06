@@ -235,7 +235,6 @@ WARRANTY_LOOKUP_ENABLED = os.environ['WARRANTY_LOOKUP_ENABLED']
 # enable MODEL_LOOKUP_ENABLED to show a human readable version of the machines 
 # model
 MODEL_LOOKUP_ENABLED = os.environ['MODEL_LOOKUP_ENABLED']
-MODEL_LOOKUP_ENABLED = False
 
 # if MunkiWebAdmin is behind a proxy, and WARRANTY_LOOKUP_ENABLED or
 # MODEL_LOOKUP_ENABLED are enabled, enter the details for the proxy server in
