@@ -46,6 +46,6 @@ This assumes your Munki repo is mounted at /tmp/munki_repo.
 
 #TODO
 * add support for logging
-* add more configuration options using environment variables
 * add support for sqlite and mysql
 * add support for SSL
+* add support for git
