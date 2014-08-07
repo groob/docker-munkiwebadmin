@@ -36,6 +36,8 @@ ADD nginx/munkiwebadmin.conf /etc/nginx/sites-enabled/munkiwebadmin.conf
 ADD .docker/run.sh /etc/my_init.d/run.sh
 RUN rm -f /etc/service/nginx/down
 RUN rm -f /etc/nginx/sites-enabled/default
+RUN groupadd munki
+RUN usermod -g munki app
 
 VOLUME ["/munki_repo", "/home/app/munkiwebadmin" ]
 EXPOSE 80
