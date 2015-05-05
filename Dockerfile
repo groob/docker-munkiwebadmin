@@ -1,4 +1,4 @@
-FROM django:python2-onbuild
+FROM django:python2
 
 ENV TIME_ZONE America/New_York
 ENV APPNAME MunkiWebAdmin
