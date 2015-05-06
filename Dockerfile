@@ -1,4 +1,4 @@
-FROM django:python2
+FROM alpine:3.1
 
 ENV TIME_ZONE America/New_York
 ENV APPNAME MunkiWebAdmin
@@ -8,8 +8,10 @@ ENV MANIFEST_USERNAME_IS_EDITABLE False
 ENV WARRANTY_LOOKUP_ENABLED False
 ENV MODEL_LOOKUP_ENABLED False
 
-COPY ./munkiwebadmin /usr/src/app
-COPY .docker/ /usr/sbin/
+WORKDIR /munkiwebadmin
+COPY . /munkiwebadmin
 
-ENTRYPOINT ["/bin/bash", "/usr/sbin/run.sh"]
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+RUN apk add --update python py-pip
+RUN apk --update add --virtual build-dependencies python-dev build-base wget postgresql libpq postgresql-contrib postgresql-dev \
+  && pip install -r requirements.txt \
+  && apk del build-dependencies
