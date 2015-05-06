@@ -18,7 +18,7 @@ RUN apk --update add --virtual build-dependencies python-dev build-base wget pos
 
 COPY .docker/ /usr/sbin/
 COPY ./munkiwebadmin /munkiwebadmin
-COPY admin_tools /munkiwebadmin/
+COPY ./admin_tools /munkiwebadmin/admin_tools
 COPY settings.py /munkiwebadmin/
 
 WORKDIR /munkiwebadmin
