@@ -18,6 +18,9 @@ RUN apk --update add --virtual build-dependencies python-dev build-base wget pos
 
 COPY .docker/ /usr/sbin/
 COPY ./munkiwebadmin /munkiwebadmin
+COPY ./admin_tools /munkiwebadmin/
+COPY settings.py /munkiwebadmin/
+
 WORKDIR /munkiwebadmin
 
 ENTRYPOINT ["/bin/sh", "/usr/sbin/run.sh"]
