@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 ADMIN_PASS=${ADMIN_PASS:-}
 python manage.py syncdb --noinput

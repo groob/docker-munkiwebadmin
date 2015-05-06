@@ -8,10 +8,17 @@ ENV MANIFEST_USERNAME_IS_EDITABLE False
 ENV WARRANTY_LOOKUP_ENABLED False
 ENV MODEL_LOOKUP_ENABLED False
 
-WORKDIR /munkiwebadmin
-COPY . /munkiwebadmin
+COPY requirements.txt /tmp/
 
 RUN apk add --update python py-pip
 RUN apk --update add --virtual build-dependencies python-dev build-base wget postgresql libpq postgresql-contrib postgresql-dev \
-  && pip install -r requirements.txt \
-  && apk del build-dependencies
+  && pip install -r /tmp/requirements.txt \
+  && apk del build-dependencies \
+  && rm -rf /var/cache/apk/*
+
+COPY .docker/ /usr/sbin/
+COPY ./munkiwebadmin /munkiwebadmin
+WORKDIR /munkiwebadmin
+
+ENTRYPOINT ["/bin/sh", "/usr/sbin/run.sh"]
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
