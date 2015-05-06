@@ -10,7 +10,7 @@ ENV MODEL_LOOKUP_ENABLED False
 
 COPY requirements.txt /tmp/
 
-RUN apk add --update python py-pip
+RUN apk add --update python py-pip libpq
 RUN apk --update add --virtual build-dependencies python-dev build-base wget postgresql libpq postgresql-contrib postgresql-dev \
   && pip install -r /tmp/requirements.txt \
   && apk del build-dependencies \
